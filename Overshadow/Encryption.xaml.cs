@@ -24,14 +24,31 @@ namespace Overshadow
         private bool checkForBinary() // Sanity check so program doesn't crash if empty.
         {
             string beacon = @"..\..\Assets\Files\beacon.bin";
-            var checkme = File.Exists(beacon);
-            if (checkme == true)
+            var fileCheck = fileLocation;
+            if (fileCheck == null)
             {
-                return true;
+                var fileChecker = false;
+                return fileChecker;
             }
             else
             {
-                return false;
+                var fileChecker = true;
+                return fileChecker;
+            }
+            var checkme = File.Exists(beacon);
+            if (checkme == true)
+            {
+                if (fileLocation != null)
+                {
+                    return true;
+                }
+            }
+            else
+            {
+                if (fileLocation == null)
+                {
+                    return false;
+                }
             }
 
         }
