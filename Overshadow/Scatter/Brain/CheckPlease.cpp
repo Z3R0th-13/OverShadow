@@ -980,9 +980,9 @@ string MotherFuckingBreadCrumbs = "I love bread";
 BOOL SafeToExecute()
 {
 	BOOL ReturnFlag = TRUE;
-	if (!IsUTCTimeZone()) { printf("\t[-] Not in a UTC Time Zone.\n"); ReturnFlag = FALSE; }
+	//if (!IsUTCTimeZone()) { printf("\t[-] Not in a UTC Time Zone.\n"); ReturnFlag = FALSE; }
 	//if (IsDebuggerAttached()) {	printf("\t[-] Debugger attached.\n"); ReturnFlag = FALSE; }
-	if (!HasComputerName())	{ printf("\t[-] Computername couldn't be acquired.\n"); ReturnFlag = FALSE;	}
+	//if (!HasComputerName())	{ printf("\t[-] Computername couldn't be acquired.\n"); ReturnFlag = FALSE;	}
 	//BOOL userCheck = HasUsername();	if (!userCheck)	{ printf("\t[-] Username couldn't be acquired; exiting.\n"); ReturnFlag = FALSE; }
 	 //If you want to check if you're joined to a SPECIFIC domain,
 	 //change this to IsDomainJoined(L"DEVLAB.LOCAL")

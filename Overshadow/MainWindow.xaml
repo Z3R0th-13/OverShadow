@@ -182,6 +182,12 @@
                            Width="45">
                     </Image>
                 </Button>
+                <Thumb
+                    x:Name="headerThumb"
+                    Opacity="0"
+                    Background="{x:Null}"
+                    Foreground="{x:Null}"
+                    DragDelta="headerThumb_DragDelta" Margin="0,0,115,0"/>
             </Grid>
             <Frame x:Name="Main"
                    Margin="105,85,0,0"

@@ -1,10 +1,18 @@
-﻿namespace Overshadow
+﻿using System.Windows.Controls.Primitives;
+
+namespace Overshadow
 {
     public partial class MainWindow
     {
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void headerThumb_DragDelta(object sender, DragDeltaEventArgs e)
+        {
+            Left = Left + e.HorizontalChange;
+            Top = Top + e.VerticalChange;
         }
 
         private void Encryption_Click(object sender, System.Windows.RoutedEventArgs e)

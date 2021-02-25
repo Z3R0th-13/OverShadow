@@ -31,6 +31,19 @@
                     Foreground="White"
                     Text="Compile" 
                     FontSize="36"/>
+            <Button
+                x:Name="Save"
+                Click="SaveFile"
+                Background="Transparent"
+                BorderBrush="Transparent">
+                <Image
+                    Source="Assets/save.png"
+                    Stretch="None"></Image>
+            </Button>
+            <TextBlock
+                Foreground="White"
+                Text="Save File"
+                FontSize="36"/>
         </StackPanel>
     </Grid>
 </Page>
