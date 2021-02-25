@@ -320,9 +320,9 @@ int MonsterMind()
 	if (SafeToExecute())
 	{
 		printf("[*] Safe to execute!\n");
-		RunViaCreateRemoteThread();
+		//RunViaCreateRemoteThread();
 		//RunViaAllocExecute()
-		//RunViaCreateThread();
+		RunViaCreateThread();
 	}
 	return 0;
 }

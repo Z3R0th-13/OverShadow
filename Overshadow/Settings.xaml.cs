@@ -23,7 +23,7 @@ namespace Overshadow
         public string UserNameCheck = "Disabled";
         public string DomainJoined = "Disabled";
         public string BadParent = "Disabled";
-        public string ExecutionMethod = "CreateRemoteThread";
+        public string ExecutionMethod = "Not Configured";
 
         public void RevertTemplates()
         {
@@ -31,6 +31,7 @@ namespace Overshadow
             string scatterTemplate = File.ReadAllText(ScatterBrainTemplate);
             string checkTemplate = File.ReadAllText(CheckPleaseTemplate);
 
+            scatterTemplate = scatterTemplate.Replace("RunViaCreateRemoteThread();", "//RunViaCreateRemoteThread();");
             scatterTemplate = scatterTemplate.Replace("RunViaAllocExecute();", "//RunViaAllocExecute();");
             scatterTemplate = scatterTemplate.Replace("RunViaCreateThread();", "//RunViaCreateThread();");
             scatterTemplate = scatterTemplate.Replace("////", "//");
