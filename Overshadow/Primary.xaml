@@ -1,0 +1,98 @@
+﻿<Page x:Class="Overshadow.Primary"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Primary">
+
+    <Grid>
+        <Grid Background="#1C2F3E">
+            <Image Source="Assets/demon.png"
+                   Height="200"
+                   Opacity="0.5"/>
+        </Grid>
+        <StackPanel Orientation="Vertical"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    Margin="20"
+                    Width="Auto">
+            <!-- This is for the MD5 Hash -->
+            <StackPanel
+                Orientation="Horizontal">
+                <Label Content="The MD5 Hash Is: "
+                       Foreground="White"
+                       FontSize="25"
+                       VerticalAlignment="Center">
+                </Label>
+                <TextBlock
+                    FontSize="25"
+                    Margin="5"
+                    Foreground="White"
+                    Text="{Binding SafetyChecks}">
+                </TextBlock>
+            </StackPanel>
+            <!-- This is for the Secret Key -->
+            <StackPanel 
+                Orientation="Horizontal">
+                <Label Content="The Secret Key currently set is: "
+                       Foreground="White"
+                       FontSize="25"
+                       VerticalAlignment="Center">
+                </Label>
+                <TextBlock
+                    FontSize="25"
+                    Margin="5"
+                    Foreground="White"
+                    Text="{Binding secretKeyValue}">
+                </TextBlock>
+            </StackPanel>
+            <!-- This is for the payload creation date -->
+            <StackPanel 
+                Orientation="Horizontal">
+                <Label Content="Creation Date: "
+                       Foreground="White"
+                       FontSize="25"
+                       VerticalAlignment="Center">
+                </Label>
+                <TextBlock
+                    FontSize="25"
+                    Margin="5"
+                    Foreground="White"
+                    Text="{Binding payloadCreationDate}">
+                </TextBlock>
+            </StackPanel>
+            <!-- This is for the file location -->
+            <StackPanel 
+                Orientation="Horizontal">
+                <Label Content="File located at: "
+                       Foreground="White"
+                       FontSize="25"
+                       VerticalAlignment="Center">
+                </Label>
+                <TextBlock
+                    FontSize="25"
+                    Margin="5"
+                    Foreground="White"
+                    Text="{Binding locationOfFile}">
+                </TextBlock>
+            </StackPanel>
+            <!-- This is for the user who generated -->
+            <StackPanel 
+                Orientation="Horizontal">
+                <Label Content="Who generated the payload: "
+                       Foreground="White"
+                       FontSize="25"
+                       VerticalAlignment="Center">
+                </Label>
+                <TextBlock
+                    FontSize="25"
+                    Margin="5"
+                    Foreground="White"
+                    Text="{Binding userWhoGenerated}">
+                </TextBlock>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>
