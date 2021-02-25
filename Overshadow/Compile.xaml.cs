@@ -56,7 +56,6 @@ namespace Overshadow
                 Console.WriteLine("Exception Occurred :{0},{1}", ex.Message, ex.StackTrace.ToString());
             }
             var checkme = File.Exists(ScatterBrainExe);
-            Console.WriteLine(checkme);
             if (checkme == true)
             {
                 MessageBoxResult result = MessageBox.Show("ScatterBrain compiled successfully!", "Hooray!");

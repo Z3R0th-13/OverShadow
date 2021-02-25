@@ -20,6 +20,21 @@ namespace Overshadow
         // Transform our global variable into a function we can call
         public string InitialFileDirectory = @"C:\"; // Had to set this as C:\ since relative paths were not being accepted and resulting in a program crash.
         public string RawData = @"..\..\Scatter\Brain\rawdata.h";
+
+        private bool checkForBinary() // Sanity check so program doesn't crash if empty.
+        {
+            string beacon = @"..\..\Assets\Files\beacon.bin";
+            var checkme = File.Exists(beacon);
+            if (checkme == true)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
         public string uploadedFileLocation()
         {
             string location = fileLocation;
@@ -113,16 +128,21 @@ namespace Overshadow
                 result[i] = res;
                 j += 1;
             }
-            string readme = new string(cryptor);
-            Console.WriteLine("LOOK AT ME! " + readme);
-
             return result;
         }
         private void Encrypt(object sender, EventArgs e)
         {
-            CreateEncryptedBin();
-            MagicShit();
-            MessageBoxResult result = MessageBox.Show("Binary has been encrypted!", "Success!");
+            checkForBinary();
+            if (checkForBinary() == false)
+            {
+                _ = MessageBox.Show("I don't see a beacon.bin inside of Assets/Files and no custom beacon was uploaded", "Missing File!");
+            }
+            else
+            {
+                CreateEncryptedBin();
+                MagicShit();
+                MessageBoxResult result = MessageBox.Show("Binary has been encrypted!", "Success!");
+            }
         }
 
         // XOR our binary. By default it's a static key of SOUR unless otherwise changed.
@@ -133,7 +153,6 @@ namespace Overshadow
             {
                 var filePath = Directory.GetCurrentDirectory();
                 var placeFiles = filePath + "..\\..\\..\\Assets\\Files\\";
-                Console.WriteLine("Looking for beacon at " + placeFiles);
                 string absolutepower = placeFiles + "beacon.bin";
                 var fileName = absolutepower;
                 byte[] shellcodeBytes = File.ReadAllBytes(fileName);
@@ -185,7 +204,6 @@ namespace Overshadow
         {
             var filePath2 = Directory.GetCurrentDirectory();
             var placeFiles2 = filePath2 + "..\\..\\..\\Assets\\Files\\";
-            Console.WriteLine("Creating encrypted.bin at " + placeFiles2);
             string encryptedPath = placeFiles2 + "encrypted.bin";
             var encfilename = encryptedPath; // File to read in
             byte[] encbytes = System.IO.File.ReadAllBytes(encfilename); // Read file as bytes
@@ -198,7 +216,6 @@ namespace Overshadow
             if (customKey == "ChangeMe")
             {
                 var secretKey = "SOUR";
-                Console.WriteLine("SecretKey inside of RawData.h: " + secretKey);
                 var encinitial_Formatting = Regex.Replace(encnewhex.ToString(), ".{2}", "$0,0x"); // Formats majority of string to hex
                 var encsecondary_Formatting = string.Format("0x{0}", encinitial_Formatting.PadLeft(2, '0')); // adds 0x to the first character
                 var encchunkychunk = Regex.Replace(encsecondary_Formatting.ToString(), ".{55}", "$0,\n"); // Chunk out into 11 bytes per line
@@ -228,7 +245,6 @@ namespace Overshadow
             else
             {
                 var secretKey = customKey;
-                Console.WriteLine("SecretKey: " + secretKey);
                 var encinitial_Formatting = Regex.Replace(encnewhex.ToString(), ".{2}", "$0,0x"); // Formats majority of string to hex
                 var encsecondary_Formatting = string.Format("0x{0}", encinitial_Formatting.PadLeft(2, '0')); // adds 0x to the first character
                 var encchunkychunk = Regex.Replace(encsecondary_Formatting.ToString(), ".{55}", "$0,\n"); // Chunk out into 11 bytes per line
@@ -237,10 +253,6 @@ namespace Overshadow
                 var encmaidService = enchouseCleaning.ToString().Replace(", ,", ","); // Get rid of weird comma space at the end of the line
                 var encfinalForm = encmaidService.Substring(0, encmaidService.Length - 4); // Get rid of trailing 3 characters that we don't need
                 var longDaddy = encfinalForm.Length;
-
-                string pwd = Directory.GetCurrentDirectory();
-                Console.WriteLine(pwd);
-
                 string superRaw = @"..\..\Scatter\Brain\rawdata.h";
                 var stream = new FileStream(superRaw, FileMode.Create);
                 using (StreamWriter writer = new StreamWriter(stream))
