@@ -27,7 +27,6 @@ namespace Overshadow
             {
                 string fileName = saveFileDialog.FileName;
                 System.IO.File.Copy(sourceFile, fileName, true);
-                //System.IO.File.Move(sourceFile, fileName);
             }
         }
 

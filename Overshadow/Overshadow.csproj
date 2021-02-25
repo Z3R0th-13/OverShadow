@@ -140,7 +140,6 @@
     <Resource Include="Assets\home.png" />
     <Resource Include="Assets\import.png" />
     <Resource Include="Assets\key.png" />
-    <Resource Include="Assets\mask.png" />
     <Resource Include="Assets\refresh.png" />
     <Resource Include="Assets\settings.png" />
     <Resource Include="Assets\skull_crossbones.png" />
