@@ -17,7 +17,6 @@ namespace Overshadow
         public string ScatterBrainExe = @"..\..\Scatter\Brain\x64\Release\scatterbrain.exe";
         private void SaveFile(object sender, RoutedEventArgs e)
         {
-            string sourceFile = @"..\..\Scatter\Brain\x64\Release\scatterbrain.exe";
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.FileName = "Beacon";
             saveFileDialog.DefaultExt = ".exe";
@@ -26,7 +25,7 @@ namespace Overshadow
             if (result == true)
             {
                 string fileName = saveFileDialog.FileName;
-                System.IO.File.Copy(sourceFile, fileName, true);
+                System.IO.File.Copy(ScatterBrainExe, fileName, true);
             }
         }
 
