@@ -31,6 +31,19 @@ namespace Overshadow
 
         private void Compile_Click(object sender, System.Windows.RoutedEventArgs e)
         {
+            string encryptedbeaconcheck = @"..\..\Assets\Files\encrypted.bin";
+            if (File.Exists(encryptedbeaconcheck))
+            {
+                // Do nothing
+                Console.WriteLine("I found it, skipping ahead now");
+            }
+            else
+            {
+                Console.WriteLine("I didn't find it. I'll make one now");
+                Encryption encryption = new Encryption();
+                encryption.CreateEncryptedBin();
+                Encryption.MagicShit();
+            }
             Process proc = null;
             //Try and compile ScatterBrain
             try
@@ -55,6 +68,8 @@ namespace Overshadow
             {
                 Console.WriteLine("Exception Occurred :{0},{1}", ex.Message, ex.StackTrace.ToString());
             }
+            // Get rid of encrypted.bin so the sanity check works.
+            File.Delete(encryptedbeaconcheck);
             var checkme = File.Exists(ScatterBrainExe);
             if (checkme == true)
             {
